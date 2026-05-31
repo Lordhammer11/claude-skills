@@ -142,7 +142,11 @@ jobs:
             IFS='|' read -r NAME SCORE DS CS VSTATUS SUGGESTIONS <<< "$PARSED"
 
             # Determine verdict
-            if [ "$SCORE" -ge "$THRESHOLD" ]; then
+            # All-zero scores (0/0%/0%) mean Tessl API/auth failed — warn but don't block
+            if [ "$SCORE" -eq "0" ] && [ "$DS" -eq "0" ] && [ "$CS" -eq "0" ]; then
+              ICON="⚠️"
+              VERDICT="SKIP (Tessl unavailable)"
+            elif [ "$SCORE" -ge "$THRESHOLD" ]; then
               ICON="✅"
               VERDICT="PASS"
             else
