@@ -99,4 +99,4 @@
 
 ---
 
-*Last updated: 2026-06-01 · Auto-synced by `.github/workflows/brain-sync.yml`*
+*Last updated: 2026-06-02 · Auto-synced by `.github/workflows/brain-sync.yml`*
